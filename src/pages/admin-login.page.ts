@@ -8,7 +8,8 @@ export class AdminLoginPage {
     loginBtn: Locator;
     registerLink: Locator;
     lostPassLink: Locator;
-    goToSiteTile: Locator
+    goToSiteTitleLink: Locator;
+    errorMess: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -18,7 +19,8 @@ export class AdminLoginPage {
         this.loginBtn = this.page.locator("//input[@id='wp-submit']");
         this.registerLink = this.page.locator("//a[@class='wp-login-register']");
         this.lostPassLink = this.page.locator("//a[@class='wp-login-lost-password']");
-        this.goToSiteTile = this.page.locator("//p[@id='backtoblog']/a");
+        this.goToSiteTitleLink = this.page.locator("//p[@id='backtoblog']/a");
+        this.errorMess=this.page.locator("//div[@id='login_error']")
     }
 
     async fillUsername(username: string) {
@@ -30,12 +32,10 @@ export class AdminLoginPage {
     }
 
     async checkRemember() {
-        if (!(await this.rememberMeCb.isChecked())) {
-            this.rememberMeCb.check();
-        }
+            await this.rememberMeCb.check();
     }
 
-    async clickLogin() {
+    async clickLoginBtn() {
         await this.loginBtn.click();
     }
 
@@ -48,9 +48,13 @@ export class AdminLoginPage {
     }
 
     async clickGotoSiteLink() {
-        await this.goToSiteTile.click();
+        await this.goToSiteTitleLink.click();
     }
 
-
-
+    async login(username: string, password: string){
+        await this.fillUsername(username);
+        await this.fillPassWord(password);
+        await this.checkRemember();
+        await this.clickLoginBtn();
+    }
 }

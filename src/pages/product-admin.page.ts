@@ -112,7 +112,7 @@ export class ProductAdmin {
         this.shippingClass = this.page.getByRole("combobox", { name: "Shipping class" });
         //Menu Product data - Linked Products
         this.linkedLink = this.page.getByRole("link", { name: "Linked Products" });
-        this.upSells = this.page.locator("p").filter({has: this.page.getByLabel("Upsells")});
+        this.upSells = this.page.locator("p").filter({ has: this.page.getByLabel("Upsells") });
         this.crossSells = this.page.locator("p").filter({ has: this.page.getByLabel("Cross-sells") });
         //Menu Product data - Attibutes
         this.attributesLink = this.page.locator(".attribute_options.attribute_tab").locator("a");
@@ -126,11 +126,11 @@ export class ProductAdmin {
         this.enableReview = this.page.getByRole("checkbox", { name: "Enable reviews" });
         this.avaibaleForPOS = this.page.getByRole("checkbox", { name: "Available for POS" });
         //Add product success
-        this.messageSuccess=this.page.locator(".notice.notice-success.is-dismissible.updated").locator("p");
-        this.viewProduct=this.page.locator(".notice.notice-success.is-dismissible.updated").locator("a");
+        this.messageSuccess = this.page.locator(".notice.notice-success.is-dismissible.updated").locator("p");
+        this.viewProduct = this.page.locator(".notice.notice-success.is-dismissible.updated").locator("a");
         //List product
-        this.listProductName=this.page.locator(".name.column-name.has-row-actions.column-primary");
-        this.titleProduct=this.page.locator(".product_title.entry-title");
+        this.listProductName = this.page.locator(".name.column-name.has-row-actions.column-primary");
+        this.titleProduct = this.page.locator(".product_title.entry-title");
     }
 
     async gotoAddProductMenu() {
@@ -141,142 +141,23 @@ export class ProductAdmin {
         await this.addProductbtn.click();
     }
 
-    async closeProductDataArea() {
-        const showData = await this.productDataArea.getAttribute("class");
+    async closeArea(area: Locator, x: number, y: number) {
+        const showData = await area.getAttribute("class");
         if (showData != "postbox closed") {
-            await this.productDataArea.click({ position: { x: 100, y: 30 } })
+            await area.click({ position: { x: x, y: y } });
         }
     }
-
-    async expandProductDataArea() {
-        const showData = await this.productDataArea.getAttribute("class");
+    async expandArea(area: Locator, x: number, y: number) {
+        const showData = await area.getAttribute("class");
         if (showData == "postbox closed") {
-            await this.productDataArea.click({ position: { x: 100, y: 30 } })
+            await area.click({ position: { x: x, y: y } });
         }
     }
 
-    async closeSortDescArea() {
-        const showSort = await this.productSortDescArea.getAttribute("class");
-        if (showSort != "postbox closed") {
-            await this.productSortDescArea.click({ position: { x: 100, y: 30 } })
-        }
+    async clickDataMenu(link: Locator) {
+        await link.click();
     }
 
-    async expandSortDescArea() {
-        const showSort = await this.productSortDescArea.getAttribute("class");
-        if (showSort == "postbox closed") {
-            await this.productSortDescArea.click({ position: { x: 100, y: 30 } })
-        }
-    }
-
-    async closePublishArea() {
-        const showPublish = await this.productPublishArea.getAttribute("class");
-        if (showPublish != "postbox closed") {
-            await this.productPublishArea.click({ position: { x: 50, y: 15 } })
-        }
-    }
-
-    async expandPublishArea() {
-        const showPublish = await this.productPublishArea.getAttribute("class");
-        if (showPublish == "postbox closed") {
-            await this.productPublishArea.click({ position: { x: 50, y: 15 } })
-        }
-    }
-
-    async closeBrandsArea() {
-        const showBrands = await this.productBrandscArea.getAttribute("class");
-        if (showBrands != "postbox closed") {
-            await this.productBrandscArea.click({ position: { x: 50, y: 15 } })
-        }
-    }
-
-    async expandBrandsArea() {
-        const showBrands = await this.productBrandscArea.getAttribute("class");
-        if (showBrands == "postbox closed") {
-            await this.productBrandscArea.click({ position: { x: 50, y: 15 } })
-        }
-    }
-
-    async closeCategoryArea() {
-        const showCategory = await this.productCategoryArea.getAttribute("class");
-        if (showCategory != "postbox closed") {
-            await this.productCategoryArea.click({ position: { x: 50, y: 15 } })
-        }
-    }
-
-    async expandCategoryArea() {
-        const showCategory = await this.productCategoryArea.getAttribute("class");
-        if (showCategory == "postbox closed") {
-            await this.productCategoryArea.click({ position: { x: 50, y: 15 } })
-        }
-    }
-
-    async closeImgArea() {
-        const showImg = await this.productImgArea.getAttribute("class");
-        if (showImg != "postbox closed") {
-            await this.productImgArea.click({ position: { x: 50, y: 15 } })
-        }
-    }
-
-    async expandImgArea() {
-        const showImg = await this.productImgArea.getAttribute("class");
-        if (showImg == "postbox closed") {
-            await this.productImgArea.click({ position: { x: 50, y: 15 } })
-        }
-    }
-
-    async closeTagsArea() {
-        const showTags = await this.productTagsArea.getAttribute("class");
-        if (showTags != "postbox closed") {
-            await this.productTagsArea.click({ position: { x: 50, y: 15 } })
-        }
-    }
-
-    async expandTagsArea() {
-        const showTags = await this.productTagsArea.getAttribute("class");
-        if (showTags == "postbox closed") {
-            await this.productTagsArea.click({ position: { x: 50, y: 15 } })
-        }
-    }
-
-    async closeGalleryArea() {
-        const showGalleyry = await this.productGalleryArea.getAttribute("class");
-        if (showGalleyry != "postbox closed") {
-            await this.productGalleryArea.click({ position: { x: 50, y: 15 } })
-        }
-    }
-
-    async expandGalleryArea() {
-        const showGalleyry = await this.productGalleryArea.getAttribute("class");
-        if (showGalleyry == "postbox closed") {
-            await this.productGalleryArea.click({ position: { x: 50, y: 15 } })
-        }
-    }
-
-    async clickGenralData() {
-        await this.expandProductDataArea();
-        await this.generalLink.click();
-    }
-    async clickInventoryData() {
-        await this.expandProductDataArea();
-        await this.inventoryLink.click();
-    }
-    async clickShippingData() {
-        await this.expandProductDataArea();
-        await this.shippingLink.click();
-    }
-    async clickLinkedData() {
-        await this.expandProductDataArea();
-        await this.linkedLink.click();
-    }
-    async clickAttributesData() {
-        await this.expandProductDataArea();
-        await this.attributesLink.click();
-    }
-    async clickAdvancedData() {
-        await this.expandProductDataArea();
-        await this.advancedLink.click();
-    }
     async fillProductName(productName: string) {
         await this.productName.fill(productName);
     }
@@ -292,7 +173,6 @@ export class ProductAdmin {
     }
 
     async setRegularPrice(regularPrice: number) {
-        await this.clickGenralData();
         await this.regularPrice.fill(regularPrice.toString());
     }
 
@@ -304,8 +184,7 @@ export class ProductAdmin {
         await this.productDesc.fill(desc);
     }
 
-    async clickPublish(){
-        await this.expandPublishArea();
+    async clickPublish() {
         await this.publishBtn.click();
     }
 
@@ -319,17 +198,17 @@ export class ProductAdmin {
         await this.clickPublish();
     }
 
-    async clickViewProduct(){
+    async clickViewProduct() {
         await this.viewProduct.click();
     }
 
-    getProduct(name:string):Locator{
-        return this.listProductName.filter({hasText:`${name}`});
+    getProduct(name: string): Locator {
+        return this.listProductName.filter({ hasText: `${name}` });
     }
 
-    async deleteProduct(product:Locator){
+    async deleteProduct(product: Locator) {
         await product.hover();
-        const deleteProductBtn=product.getByRole("link",{name:/Trash/});
+        const deleteProductBtn = product.getByRole("link", { name: /Trash/ });
         await deleteProductBtn.click();
     }
 }

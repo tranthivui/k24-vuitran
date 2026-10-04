@@ -2,6 +2,7 @@ import { ProductDetailPage } from "../src/pages/product-page.page";
 import { test } from "../src/fixtures/product-detail.fixture"
 import { expect } from "@playwright/test";
 import { HomePage } from "../src/pages/home-page.page";
+import { ProductAdmin } from "../src/pages/product-admin.page";
 
 test.describe("Verify product detail page", async () => {
     const testData = {
@@ -82,5 +83,5 @@ test.describe("Verify product detail page", async () => {
             await expect(productDetail2.noReview).toBeVisible();
             await newPage.waitForTimeout(5_000)
         })
-    })
+    });
 })

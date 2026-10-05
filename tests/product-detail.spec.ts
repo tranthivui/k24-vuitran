@@ -1,5 +1,5 @@
 import { ProductDetailPage } from "../src/pages/product-page.page";
-import { test } from "../src/fixtures/product-detail.fixture"
+import { test } from "../src/fixtures/page.fixture"
 import { expect } from "@playwright/test";
 import { HomePage } from "../src/pages/home-page.page";
 import { ProductAdmin } from "../src/pages/product-admin.page";

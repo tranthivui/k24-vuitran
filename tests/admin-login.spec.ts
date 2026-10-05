@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-import { test } from "../src/fixtures/dashboard.fixture";
+import { test } from "../src/fixtures/page.fixture";
 
 
 test.describe("Verify UI trang authentication", async () => {

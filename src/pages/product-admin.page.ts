@@ -141,21 +141,142 @@ export class ProductAdmin {
         await this.addProductbtn.click();
     }
 
-    async closeArea(area: Locator, x: number, y: number) {
-        const showData = await area.getAttribute("class");
+    async closeDataArea() {
+        const showData = await this.productDataArea.getAttribute("class");
         if (showData != "postbox closed") {
-            await area.click({ position: { x: x, y: y } });
-        }
-    }
-    async expandArea(area: Locator, x: number, y: number) {
-        const showData = await area.getAttribute("class");
-        if (showData == "postbox closed") {
-            await area.click({ position: { x: x, y: y } });
+            await this.productDataArea.click({ position: { x: 50, y: 10 } });
         }
     }
 
-    async clickDataMenu(link: Locator) {
-        await link.click();
+    async expandDataArea() {
+        const showData = await this.productDataArea.getAttribute("class");
+        if (showData == "postbox closed") {
+            await this.productDataArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+
+    async closeShortDescArea() {
+        const showData = await this.productSortDescArea.getAttribute("class");
+        if (showData != "postbox closed") {
+            await this.productSortDescArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+
+    async expandShortDescArea() {
+        const showData = await this.productSortDescArea.getAttribute("class");
+        if (showData == "postbox closed") {
+            await this.productSortDescArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+
+    async closePublishArea() {
+        const showData = await this.productPublishArea.getAttribute("class");
+        if (showData != "postbox closed") {
+            await this.productPublishArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+
+    async expandPublishArea() {
+        const showData = await this.productPublishArea.getAttribute("class");
+        if (showData == "postbox closed") {
+            await this.productPublishArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+
+    async closeCategoryArea() {
+        const showData = await this.productCategoryArea.getAttribute("class");
+        if (showData != "postbox closed") {
+            await this.productCategoryArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+
+    async expandCategoryArea() {
+        const showData = await this.productCategoryArea.getAttribute("class");
+        if (showData == "postbox closed") {
+            await this.productCategoryArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+
+    async cloaseTagsArea() {
+        const showData = await this.productTagsArea.getAttribute("class");
+        if (showData != "postbox closed") {
+            await this.productTagsArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+
+    async expandTagsArea() {
+        const showData = await this.productTagsArea.getAttribute("class");
+        if (showData == "postbox closed") {
+            await this.productTagsArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+    async cloaseBrandsArea() {
+        const showData = await this.productBrandscArea.getAttribute("class");
+        if (showData != "postbox closed") {
+            await this.productBrandscArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+
+    async expandBrandsArea() {
+        const showData = await this.productBrandscArea.getAttribute("class");
+        if (showData == "postbox closed") {
+            await this.productBrandscArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+    async cloaseImgArea() {
+        const showData = await this.productImgArea.getAttribute("class");
+        if (showData != "postbox closed") {
+            await this.productImgArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+
+    async expandImgArea() {
+        const showData = await this.productImgArea.getAttribute("class");
+        if (showData == "postbox closed") {
+            await this.productImgArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+    async cloaseGalleryArea() {
+        const showData = await this.productGalleryArea.getAttribute("class");
+        if (showData != "postbox closed") {
+            await this.productGalleryArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+
+    async expandGalleryArea() {
+        const showData = await this.productGalleryArea.getAttribute("class");
+        if (showData == "postbox closed") {
+            await this.productGalleryArea.click({ position: { x: 50, y: 10 } });
+        }
+    }
+
+    async openGenera() {
+        await this.expandDataArea();
+        await this.generalLink.click();
+    }
+
+     async openInventory() {
+        await this.expandDataArea();
+        await this.inventoryLink.click();
+    }
+
+         async openShipping() {
+        await this.expandDataArea();
+        await this.shippingLink.click();
+    }
+
+         async openLinkedProduct() {
+        await this.expandDataArea();
+        await this.linkedLink.click();
+    }
+async openAttributes() {
+        await this.expandDataArea();
+        await this.attributesLink.click();
+    }
+
+async openAdvanved() {
+        await this.expandDataArea();
+        await this.advancedLink.click();
     }
 
     async fillProductName(productName: string) {

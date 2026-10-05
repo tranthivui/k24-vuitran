@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-import { test } from "../src/fixtures/product-admin.fixture";
+import { test } from "../src/fixtures/page.fixture";
 import { ProductAdmin } from "../src/pages/product-admin.page";
 
 test.describe("Verify product admin page", async () => {
@@ -22,8 +22,7 @@ test.describe("Verify product admin page", async () => {
             regularPrice: 1000,
             salePrice: 850
         },
-        addProductSuccessMess: "Product published. View Product",
-        clickPosition: [50, 15]
+        addProductSuccessMess: "Product published. View Product"
     };
     test.beforeEach("Login admin", async ({ adminLoginPage, productAdmin }) => {
         await test.step("Go to login page", async () => {
@@ -65,28 +64,28 @@ test.describe("Verify product admin page", async () => {
         });
 
         await test.step("Verify collapsible cua cac khoi", async () => {
-            await productAdmin.closeArea(productAdmin.productDataArea, testData.clickPosition[0], testData.clickPosition[1]);
+            await productAdmin.closeDataArea();
             await expect(productAdmin.productDataArea).toHaveAttribute("class", "postbox closed");
 
-            await productAdmin.closeArea(productAdmin.productSortDescArea, testData.clickPosition[0], testData.clickPosition[1]);
+            await productAdmin.closeShortDescArea();
             await expect(productAdmin.productSortDescArea).toHaveAttribute("class", "postbox closed");
 
-            await productAdmin.closeArea(productAdmin.productPublishArea, testData.clickPosition[0], testData.clickPosition[1]);
+            await productAdmin.closePublishArea();
             await expect(productAdmin.productPublishArea).toHaveAttribute("class", "postbox closed");
 
-            await productAdmin.closeArea(productAdmin.productImgArea, testData.clickPosition[0], testData.clickPosition[1]);
+            await productAdmin.cloaseImgArea();
             await expect(productAdmin.productImgArea).toHaveAttribute("class", "postbox closed");
 
-            await productAdmin.closeArea(productAdmin.productGalleryArea, testData.clickPosition[0], testData.clickPosition[1]);
+            await productAdmin.closeCategoryArea();
             await expect(productAdmin.productGalleryArea).toHaveAttribute("class", "postbox closed");
 
-            await productAdmin.closeArea(productAdmin.productCategoryArea, testData.clickPosition[0], testData.clickPosition[1]);
+            await productAdmin.closeCategoryArea();
             await expect(productAdmin.productCategoryArea).toHaveAttribute("class", "postbox closed");
 
-            await productAdmin.closeArea(productAdmin.productBrandscArea, testData.clickPosition[0], testData.clickPosition[1]);
+            await productAdmin.cloaseBrandsArea();
             await expect(productAdmin.productBrandscArea).toHaveAttribute("class", "postbox closed");
 
-            await productAdmin.closeArea(productAdmin.productTagsArea, testData.clickPosition[0], testData.clickPosition[1]);
+            await productAdmin.cloaseTagsArea();
             await expect(productAdmin.productTagsArea).toHaveAttribute("class", "postbox closed");
         });
 
@@ -108,9 +107,9 @@ test.describe("Verify product admin page", async () => {
             await expect(productAdmin.downloadAble).toBeVisible();
             //Product data: Click tabs and show fiedls detail
             //Click expand product data
-            await productAdmin.expandArea(productAdmin.productDataArea, testData.clickPosition[0], testData.clickPosition[1]);
+            await productAdmin.expandDataArea();
             //Click tab General
-            await productAdmin.clickDataMenu(productAdmin.generalLink);
+            await productAdmin.openGenera();
             //  await productAdmin.clickGenralData();
             await expect(productAdmin.regularPrice).toBeVisible();
             await expect(productAdmin.salePrice).toBeVisible();
@@ -118,7 +117,7 @@ test.describe("Verify product admin page", async () => {
             await expect(productAdmin.taxClass).toBeVisible();
             //Click tab Inventory
             // await productAdmin.clickInventoryData();
-            await productAdmin.clickDataMenu(productAdmin.inventoryLink);
+            await productAdmin.openInventory();
             // await expect(productAdmin.SKU).toBeVisible();
             await expect(productAdmin.productIdentifier).toBeVisible();
             await expect(productAdmin.stockManager).toBeVisible();
@@ -128,25 +127,23 @@ test.describe("Verify product admin page", async () => {
             await expect(productAdmin.soldIndividually).toBeVisible();
             //Click Shipping
             //  await productAdmin.clickShippingData();
-            await productAdmin.clickDataMenu(productAdmin.shippingLink);
+            await productAdmin.openShipping();
             await expect(productAdmin.weight).toBeVisible();
             await expect(productAdmin.length).toBeVisible();
             await expect(productAdmin.width).toBeVisible();
             await expect(productAdmin.height).toBeVisible();
             await expect(productAdmin.shippingClass).toBeVisible();
             //Click linked
-            //    await productAdmin.clickLinkedData();
-            await productAdmin.clickDataMenu(productAdmin.linkedLink);
+            await productAdmin.openLinkedProduct();
             await expect(productAdmin.upSells).toBeVisible();
             await expect(productAdmin.crossSells).toBeVisible();
             //Click Attributes
-            //   await productAdmin.clickAttributesData();
-            await productAdmin.clickDataMenu(productAdmin.attributesLink);
+            await productAdmin.openAttributes();
             await expect(productAdmin.attributeName).toBeVisible();
             await expect(productAdmin.attributeValue).toBeVisible();
             //Click Advanced
             //   await productAdmin.clickAdvancedData();
-            await productAdmin.clickDataMenu(productAdmin.advancedLink);
+            await productAdmin.openAdvanved();
             await expect(productAdmin.purchaseNote).toBeVisible();
             await expect(productAdmin.menuOrder).toBeVisible();
             await expect(productAdmin.enableReview).toBeVisible();
@@ -156,8 +153,8 @@ test.describe("Verify product admin page", async () => {
 
     test("Verify tao va hien thi thanh cong san pham", async ({ productAdmin }) => {
         //Click expand Product data area
-        await productAdmin.expandArea(productAdmin.productDataArea, testData.clickPosition[0], testData.clickPosition[1]);
-        await productAdmin.expandArea(productAdmin.productPublishArea, testData.clickPosition[0], testData.clickPosition[1]);
+        await productAdmin.expandDataArea();
+        await productAdmin.expandPublishArea();
         //Fill product info
         await productAdmin.fillProductInfo(testData.product.name, testData.product.type, testData.product.desc, testData.product.regularPrice, testData.product.salePrice);
         //Verify add product success

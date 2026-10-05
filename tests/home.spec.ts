@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test"
-import { test } from "../src/fixtures/home-page.fixture"
+import { test } from "../src/fixtures/page.fixture"
 import { HomePage } from "../src/pages/home-page.page"
 
 test.describe("Verified Home Page", async () => {

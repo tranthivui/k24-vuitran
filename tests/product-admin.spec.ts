@@ -73,7 +73,7 @@ test.describe("Verify product admin page", async () => {
             await productAdmin.closePublishArea();
             await expect(productAdmin.productPublishArea).toHaveAttribute("class", "postbox closed");
 
-            await productAdmin.cloaseImgArea();
+            await productAdmin.closeImgArea();
             await expect(productAdmin.productImgArea).toHaveAttribute("class", "postbox closed");
 
             await productAdmin.closeCategoryArea();
@@ -82,10 +82,10 @@ test.describe("Verify product admin page", async () => {
             await productAdmin.closeCategoryArea();
             await expect(productAdmin.productCategoryArea).toHaveAttribute("class", "postbox closed");
 
-            await productAdmin.cloaseBrandsArea();
+            await productAdmin.closeBrandsArea();
             await expect(productAdmin.productBrandscArea).toHaveAttribute("class", "postbox closed");
 
-            await productAdmin.cloaseTagsArea();
+            await productAdmin.closeTagsArea();
             await expect(productAdmin.productTagsArea).toHaveAttribute("class", "postbox closed");
         });
 

@@ -141,142 +141,107 @@ export class ProductAdmin {
         await this.addProductbtn.click();
     }
 
-    async closeDataArea() {
-        const showData = await this.productDataArea.getAttribute("class");
+    async closeArea(area: Locator) {
+        const showData = await area.getAttribute("class");
         if (showData != "postbox closed") {
-            await this.productDataArea.click({ position: { x: 50, y: 10 } });
+            await area.click({ position: { x: 50, y: 10 } });
         }
+    }
+
+    async expandArea(area: Locator) {
+        const showData = await area.getAttribute("class");
+        if (showData == "postbox closed") {
+            await area.click({ position: { x: 50, y: 10 } });
+        }
+    }
+    async closeDataArea() {
+        await this.closeArea(this.productDataArea);
     }
 
     async expandDataArea() {
-        const showData = await this.productDataArea.getAttribute("class");
-        if (showData == "postbox closed") {
-            await this.productDataArea.click({ position: { x: 50, y: 10 } });
-        }
+        await this.expandArea(this.productDataArea);
     }
 
     async closeShortDescArea() {
-        const showData = await this.productSortDescArea.getAttribute("class");
-        if (showData != "postbox closed") {
-            await this.productSortDescArea.click({ position: { x: 50, y: 10 } });
-        }
+        await this.closeArea(this.productSortDescArea);
     }
 
     async expandShortDescArea() {
-        const showData = await this.productSortDescArea.getAttribute("class");
-        if (showData == "postbox closed") {
-            await this.productSortDescArea.click({ position: { x: 50, y: 10 } });
-        }
+        await this.expandArea(this.productSortDescArea);
     }
 
     async closePublishArea() {
-        const showData = await this.productPublishArea.getAttribute("class");
-        if (showData != "postbox closed") {
-            await this.productPublishArea.click({ position: { x: 50, y: 10 } });
-        }
+        await this.closeArea(this.productPublishArea);
     }
 
     async expandPublishArea() {
-        const showData = await this.productPublishArea.getAttribute("class");
-        if (showData == "postbox closed") {
-            await this.productPublishArea.click({ position: { x: 50, y: 10 } });
-        }
+        await this.expandArea(this.productPublishArea);
+
     }
 
     async closeCategoryArea() {
-        const showData = await this.productCategoryArea.getAttribute("class");
-        if (showData != "postbox closed") {
-            await this.productCategoryArea.click({ position: { x: 50, y: 10 } });
-        }
+        await this.closeArea(this.productCategoryArea);
     }
 
     async expandCategoryArea() {
-        const showData = await this.productCategoryArea.getAttribute("class");
-        if (showData == "postbox closed") {
-            await this.productCategoryArea.click({ position: { x: 50, y: 10 } });
-        }
+        await this.expandArea(this.productCategoryArea);
     }
 
-    async cloaseTagsArea() {
-        const showData = await this.productTagsArea.getAttribute("class");
-        if (showData != "postbox closed") {
-            await this.productTagsArea.click({ position: { x: 50, y: 10 } });
-        }
+    async closeTagsArea() {
+        await this.closeArea(this.productTagsArea);
     }
 
     async expandTagsArea() {
-        const showData = await this.productTagsArea.getAttribute("class");
-        if (showData == "postbox closed") {
-            await this.productTagsArea.click({ position: { x: 50, y: 10 } });
-        }
+        await this.expandArea(this.productTagsArea);
     }
-    async cloaseBrandsArea() {
-        const showData = await this.productBrandscArea.getAttribute("class");
-        if (showData != "postbox closed") {
-            await this.productBrandscArea.click({ position: { x: 50, y: 10 } });
-        }
+    async closeBrandsArea() {
+        await this.closeArea(this.productBrandscArea);
     }
 
     async expandBrandsArea() {
-        const showData = await this.productBrandscArea.getAttribute("class");
-        if (showData == "postbox closed") {
-            await this.productBrandscArea.click({ position: { x: 50, y: 10 } });
-        }
+        await this.expandArea(this.productBrandscArea);
     }
-    async cloaseImgArea() {
-        const showData = await this.productImgArea.getAttribute("class");
-        if (showData != "postbox closed") {
-            await this.productImgArea.click({ position: { x: 50, y: 10 } });
-        }
+    async closeImgArea() {
+        await this.closeArea(this.productImgArea);
     }
 
     async expandImgArea() {
-        const showData = await this.productImgArea.getAttribute("class");
-        if (showData == "postbox closed") {
-            await this.productImgArea.click({ position: { x: 50, y: 10 } });
-        }
+        await this.expandArea(this.productImgArea);
     }
-    async cloaseGalleryArea() {
-        const showData = await this.productGalleryArea.getAttribute("class");
-        if (showData != "postbox closed") {
-            await this.productGalleryArea.click({ position: { x: 50, y: 10 } });
-        }
+    async closeGalleryArea() {
+        await this.closeArea(this.productGalleryArea);
     }
 
     async expandGalleryArea() {
-        const showData = await this.productGalleryArea.getAttribute("class");
-        if (showData == "postbox closed") {
-            await this.productGalleryArea.click({ position: { x: 50, y: 10 } });
-        }
+        await this.expandArea(this.productGalleryArea);
+    }
+
+    async openSubDataMenu(subMenu: Locator) {
+        await this.expandDataArea();
+        await subMenu.click();
     }
 
     async openGenera() {
-        await this.expandDataArea();
-        await this.generalLink.click();
+        await this.openSubDataMenu(this.generalLink);
     }
 
-     async openInventory() {
-        await this.expandDataArea();
-        await this.inventoryLink.click();
+    async openInventory() {
+        await this.openSubDataMenu(this.inventoryLink);
     }
 
-         async openShipping() {
-        await this.expandDataArea();
-        await this.shippingLink.click();
+    async openShipping() {
+        await this.openSubDataMenu(this.shippingLink);
     }
 
-         async openLinkedProduct() {
-        await this.expandDataArea();
-        await this.linkedLink.click();
+    async openLinkedProduct() {
+        await this.openSubDataMenu(this.linkedLink);
     }
-async openAttributes() {
-        await this.expandDataArea();
-        await this.attributesLink.click();
+    async openAttributes() {
+        await this.openSubDataMenu(this.attributesLink);
     }
 
-async openAdvanved() {
-        await this.expandDataArea();
-        await this.advancedLink.click();
+    async openAdvanved() {
+        await this.openSubDataMenu(this.advancedLink);
     }
 
     async fillProductName(productName: string) {
